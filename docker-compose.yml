@@ -41,7 +41,13 @@ services:
     volumes:
       - db:/var/lib/mysql
     networks:
-      - backend
+      - backend      
+  frontend:
+    build: ./client    
+    ports:
+    - "5000:3000"
+    depends_on:
+    - server
 
 networks:
   backend:
