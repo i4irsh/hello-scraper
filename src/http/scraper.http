@@ -31,6 +31,10 @@ Content-Type: application/json
 
 {
     "urls": [
-        "https://www.freeimages.com/search/cat"
+        "https://www.freeimages.com/search/food",
+        "https://www.freeimages.com/search/sky",
+        "https://www.freeimages.com/search/mountains",
+        "https://www.freeimages.com/search/sea",
+        "https://www.freeimages.com/search/fish"
     ]
 }

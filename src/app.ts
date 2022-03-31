@@ -12,6 +12,7 @@ import DB from '@databases';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
+import { serverAdapter } from '@/queue/bullboard.config';
 
 class App {
   public app: express.Application;
@@ -56,6 +57,7 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    this.app.use('/admin/queues', serverAdapter.getRouter());
   }
 
   private initializeRoutes(routes: Routes[]) {

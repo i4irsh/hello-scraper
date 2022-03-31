@@ -19,6 +19,11 @@ services:
     container_name: server
     ports:
       - '3000:3000'
+    environment:    
+      REDIS_URL: redis:6379
+      CHOKIDAR_USEPOLLING: 'true'
+      CHOKIDAR_INTERVAL: 1000
+      ORIGIN: 'http://localhost:5000'
     volumes:
       - ./:/app
       - /app/node_modules
@@ -48,6 +53,24 @@ services:
     - "5000:3000"
     depends_on:
     - server
+    - redis
+
+  redis:
+    image: redis
+    container_name: redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6379:6379
+
+  redis-commander:
+    container_name: redis-commander
+    image: rediscommander/redis-commander
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
 
 networks:
   backend:
