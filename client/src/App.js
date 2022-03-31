@@ -8,10 +8,10 @@ function App() {
   const [term, setTerm] = useState('');
 
   useEffect(() => {
-    fetch(`https://pixabay.com/api/?key=26400283-7e3ca707926785bfc4f0a68f0&q=${term}&image_type=photo&pretty=true`)
+    fetch(`http://localhost:3000/scraper?q=${term}`)
       .then(res => res.json())
-      .then(data => {
-        setImages(data.hits);
+      .then(response => {
+        setImages(response.data);
         setIsLoading(false);
       })
       .catch(err => console.log(err));

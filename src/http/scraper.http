@@ -16,3 +16,21 @@ Content-Type: application/json
 ###
 # Get All Medias
 GET {{ baseURL }}/scraper
+
+###
+# Get All Medias with query
+GET {{ baseURL }}/scraper?q=dog
+
+
+
+
+###
+# Scrape weburl images
+POST {{ baseURL }}/scraper
+Content-Type: application/json
+
+{
+    "urls": [
+        "https://www.freeimages.com/search/cat"
+    ]
+}

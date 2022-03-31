@@ -17,7 +17,8 @@ class ScraperController {
 
   public getMedias = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const getAllMediasData: Media[] = await this.scraperService.getAllMedias();
+      const { q: searchTerm }  = req.query;      
+      const getAllMediasData: Media[] = await this.scraperService.getAllMedias(searchTerm as string);
       res.status(200).json({ data: getAllMediasData, message: 'getAllMediasData' });
     } catch (error) {
       next(error);
