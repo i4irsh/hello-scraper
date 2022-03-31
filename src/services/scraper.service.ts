@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import DB from '@databases';
 import { Scraper } from '@/interfaces/scraper.interface';
+import { Media } from '@/interfaces/media.interface';
 
 class ScraperService {
   
@@ -29,6 +30,11 @@ class ScraperService {
     const imgURLs = await page.evaluate(() => Array.from(document.querySelectorAll('img'), ({ src }) => src));
     await browser.close();
     return imgURLs;
+  }
+
+  public async getAllMedias(): Promise<Media[]> {
+    const allMedias: Media[] = await this.media.findAll();
+    return allMedias;
   }
 }
 

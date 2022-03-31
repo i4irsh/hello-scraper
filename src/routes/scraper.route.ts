@@ -15,6 +15,7 @@ class ScraperRoute implements Routes {
   }
 
   private initializeRoutes() {
+    this.router.get(`${this.path}`, this.scraperController.getMedias);
     this.router.post(`${this.path}`, this.scraperController.scrapeImagesAndVideos);   
   }
 }

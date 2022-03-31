@@ -14,12 +14,5 @@ Content-Type: application/json
 }
 
 ###
-# Scrape weburl images
-POST {{ baseURL }}/scraper
-Content-Type: application/json
-
-{
-    "urls": [
-        "https://yog9.github.io/SnapShot"
-    ]
-}
+# Get All Medias
+GET {{ baseURL }}/scraper

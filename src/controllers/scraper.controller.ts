@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { CreateUserDto } from '@dtos/users.dto';
-import { User } from '@interfaces/users.interface';
 import scraperService from '@/services/scraper.service';
+import { Media } from '@/interfaces/media.interface';
 
 class ScraperController {
   public scraperService = new scraperService();
@@ -11,6 +10,15 @@ class ScraperController {
       const { urls } = req.body;      
       const scrapeImagesAndVideos: any[] = await this.scraperService.scrapeImagesAndVideos(urls);
       res.status(200).json({ data: scrapeImagesAndVideos, message: 'scrapeImagesAndVideos' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public getMedias = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const getAllMediasData: Media[] = await this.scraperService.getAllMedias();
+      res.status(200).json({ data: getAllMediasData, message: 'getAllMediasData' });
     } catch (error) {
       next(error);
     }
