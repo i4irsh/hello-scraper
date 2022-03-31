@@ -2,27 +2,12 @@
 @baseURL = http://localhost:3000
 
 ###
-# Scrape weburl images
-POST {{ baseURL }}/scraper
-Content-Type: application/json
-
-{
-    "urls": [
-        "https://yog9.github.io/SnapShot",
-        "https://scrapeme.live/shop/"
-    ]
-}
-
-###
 # Get All Medias
 GET {{ baseURL }}/scraper
 
 ###
 # Get All Medias with query
 GET {{ baseURL }}/scraper?q=dog
-
-
-
 
 ###
 # Scrape weburl images
@@ -35,6 +20,8 @@ Content-Type: application/json
         "https://www.freeimages.com/search/sky",
         "https://www.freeimages.com/search/mountains",
         "https://www.freeimages.com/search/sea",
-        "https://www.freeimages.com/search/fish"
+        "https://www.freeimages.com/search/fish",
+        "https://www.freeimages.com/search/dog",
+        "https://www.freeimages.com/search/cat"
     ]
 }
